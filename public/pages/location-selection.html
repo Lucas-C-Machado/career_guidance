@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Escolha o Destino</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/career-selection.css">
+</head>
+<body>
+    <header style="background: #003366; color: white; padding: 20px; text-align: center;">
+        <h1>SISTEMA DE ORIENTAÇÃO DE CARREIRA</h1>
+    </header>
+
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div class="nav-left">
+            <a href="career-selection.html" class="btn-nav" style="background: #0056b3; padding: 8px 15px; border-radius: 4px; text-decoration: none; color: white; font-size: 14px;">Início / Voltar</a>
+        </div>
+        
+        <div class="nav-center">
+            <a href="student-details.html" class="btn-nav">MEU PERFIL</a>
+        </div>
+
+        <div class="nav-right">
+            <button id="btnLogout" class="btn-exit">SAIR</button>
+        </div>
+    </nav>
+
+    <main class="selection-container" style="margin-top: 50px;">
+        <h2 style="text-align: center; color: #003366; margin-bottom: 30px;">Onde você deseja estudar?</h2>
+        
+        <div class="card-grid" style="display: flex; justify-content: center; gap: 30px;">
+            <div class="career-card" onclick="confirmarDestino('Índia')" style="cursor: pointer; text-align: center; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: white; width: 250px;">
+                <div class="card-icon" style="font-size: 50px; margin-bottom: 15px;">🇮🇳</div>
+                <h3 style="color: #003366;">Índia</h3>
+                <p style="color: #666;">Instituições Locais</p>
+            </div>
+
+            <div class="career-card" onclick="confirmarDestino('Exterior')" style="cursor: pointer; text-align: center; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: white; width: 250px;">
+                <div class="card-icon" style="font-size: 50px; margin-bottom: 15px;">🌎</div>
+                <h3 style="color: #003366;">Exterior</h3>
+                <p style="color: #666;">Oportunidades Globais</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="../js/firebase-config.js"></script>
+    
+    <script>
+        // Proteção de Rota
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) window.location.href = 'login-student.html';
+        });
+
+        // Salvar e avançar
+        function confirmarDestino(local) {
+            localStorage.setItem('selectedLocation', local);
+            window.location.href = 'colleges-list.html';
+        }
+
+        // Logout
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                localStorage.clear();
+                window.location.href = 'login-student.html';
+            });
+        });
+    </script>
+</body>
+</html>

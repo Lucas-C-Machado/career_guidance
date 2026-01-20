@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Admin Dashboard - Orientação de Carreira</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="../js/firebase-config.js"></script>
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Painel Administrativo</h1>
+    </header>
+    
+    <nav class="admin-nav">
+        <div>
+            <a href="admin-dashboard.html">Gerenciar Faculdades</a>
+        </div>
+        <button id="logoutBtn" class="logout-btn">Sair</button>
+    </nav>
+
+    <div class="container admin-container">
+        
+        <div class="card admin-card">
+            <h2>Adicionar Nova Faculdade</h2>
+            <form id="addCollegeForm" class="form-grid">
+                <input type="text" id="name" placeholder="Nome da Faculdade" required class="form-full">
+                
+                <select id="area" required>
+                    <option value="">Selecione a Área</option>
+                    <option value="Engenharia">Engenharia</option>
+                    <option value="Administração">Administração</option>
+                </select>
+                
+                <select id="location" required>
+                    <option value="">Localização</option>
+                    <option value="Índia">Índia</option>
+                    <option value="Exterior">Exterior</option>
+                </select>
+
+                <input type="number" id="rank" placeholder="Classificação (Rank)" required>
+                <input type="number" id="minCgpa" placeholder="CGPA Mínimo" step="0.1" required>
+                
+                <input type="text" id="fees" placeholder="Mensalidade (ex: 200,000 INR)" required class="form-full">
+                
+                <button type="submit" class="btn-submit form-full">Adicionar à Base de Dados</button>
+            </form>
+        </div>
+
+        <div class="card admin-card">
+            <h2>Faculdades Cadastradas</h2>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Área</th>
+                            <th>Local</th>
+                            <th style="text-align: center;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collegeTableBody">
+                        <tr><td colspan="4" style="text-align: center; padding: 20px;">Carregando instituições...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

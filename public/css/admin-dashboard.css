@@ -1,0 +1,85 @@
+/* admin.css - Estilos específicos do Painel */
+
+.admin-container {
+    padding: 20px;
+    max-width: 900px; /* Reduzido de 1100 para 900 para evitar o efeito espichado */
+    margin: 20px auto;
+}
+
+.admin-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Organização do formulário */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide em duas colunas */
+    gap: 15px;
+}
+
+.form-full { 
+    grid-column: span 2; /* Itens que ocupam a largura total */
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Botão de envio destacado e sempre visível */
+.btn-submit {
+    background-color: #00509d;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #003366;
+}
+
+/* Estilos da Tabela */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th {
+    background: #003366;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Botão de Logout */
+.logout-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}

@@ -1,0 +1,46 @@
+/* Estilos para Detalhes da Instituição */
+.selection-nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px;
+}
+
+.details-grid {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+.details-grid p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.details-grid strong {
+    color: var(--primary-color);
+}
+
+.action-area {
+    margin-top: 30px; 
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.btn-logout {
+    background-color: #ff4444; 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    cursor: pointer; 
+    border-radius: 5px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+}

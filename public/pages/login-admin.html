@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Acesso Administrativo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login-admin.css">
+</head>
+<body class="login-page"> <header>
+        <h1>Painel Administrativo</h1>
+    </header>
+
+    <div class="sub-header">
+        AUTENTICAÇÃO > LOGIN ADMINISTRATIVO
+    </div>
+
+    <main class="login-container">
+        <div class="login-card">
+            <div class="card-icon" style="font-size: 50px; margin-bottom: 10px;">💻</div>
+            <h2>Acesso Administrativo</h2>
+            
+            <form id="loginAdminForm">
+                <div class="form-group">
+                    <label>E-mail Corporativo:</label>
+                    <input type="email" id="email" placeholder="admin@sistema.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Senha:</label>
+                    <input type="password" id="password" placeholder="••••••" required>
+                </div>
+
+                <button type="submit" class="btn-entry btn-admin">Entrar no Painel</button>
+            </form>
+
+            <div class="login-footer" style="margin-top: 20px;">
+                <p style="font-size: 0.85rem; color: #666;">Acesso restrito.</p>
+                <a href="../index.html" style="text-decoration: none; color: var(--secondary-color); font-size: 0.85rem;">Voltar ao Início</a>
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> 
+    
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/login-admin.js"></script>
+</body>
+</html>

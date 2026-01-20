@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Escolha sua Área - Sistema de Orientação</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/career-selection.css">
+</head>
+<body>
+    <header style="background: #003366; color: white; padding: 20px; text-align: center;">
+        <h1>SISTEMA DE ORIENTAÇÃO DE CARREIRA</h1>
+    </header>
+
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #004080;">
+        <div class="nav-left">
+            </div>
+        
+        <div class="nav-center">
+            <a href="student-details.html" class="btn-nav" style="color: white; text-decoration: none; font-weight: bold; font-size: 16px;">MEU PERFIL</a>
+        </div>
+
+        <div class="nav-right">
+            <button id="btnLogout" class="btn-exit" style="background: #d9534f; color: white; border: none; padding: 8px 18px; border-radius: 4px; cursor: pointer; font-weight: bold;">SAIR</button>
+        </div>
+    </nav>
+
+    <main class="selection-container" style="margin-top: 60px;">
+        <h2 style="text-align: center; color: #003366; margin-bottom: 40px; font-family: sans-serif;">Escolha sua Área de Interesse</h2>
+        
+        <div class="card-grid" style="display: flex; justify-content: center; gap: 40px;">
+            <div class="career-card" onclick="selectCareer('Engenharia')" style="cursor: pointer; text-align: center; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background: white; width: 260px; transition: transform 0.2s;">
+                <div class="card-icon" style="font-size: 55px; margin-bottom: 20px;">⚙️</div>
+                <h3 style="color: #003366; margin-bottom: 10px;">Engenharia</h3>
+                <p style="color: #777; font-size: 14px;">Inovação e Tecnologia</p>
+            </div>
+
+            <div class="career-card" onclick="selectCareer('Administração')" style="cursor: pointer; text-align: center; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background: white; width: 260px; transition: transform 0.2s;">
+                <div class="card-icon" style="font-size: 55px; margin-bottom: 20px;">💼</div>
+                <h3 style="color: #003366; margin-bottom: 10px;">Administração</h3>
+                <p style="color: #777; font-size: 14px;">Gestão e Liderança</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="../js/firebase-config.js"></script>
+    
+    <script>
+        // Verificação de autenticação
+        auth.onAuthStateChanged(user => {
+            if (!user) window.location.href = 'login-student.html';
+        });
+
+        // Seleção de Carreira
+        window.selectCareer = function(career) {
+            localStorage.setItem('selectedCareer', career);
+            window.location.href = 'location-selection.html';
+        };
+
+        // Função de Logout
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            if(confirm("Deseja realmente sair do sistema?")) {
+                auth.signOut().then(() => {
+                    localStorage.clear();
+                    window.location.href = 'login-student.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

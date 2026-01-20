@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Meu Perfil - Orientação de Carreira</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/student-details.css">
+</head>
+<body>
+    <header style="background: #003366; color: white; padding: 20px; text-align: center;">
+        <h1>Painel do Estudante</h1>
+    </header>
+
+    <nav class="profile-nav" style="display: flex; justify-content: space-between; padding: 10px 5%; background: #eee;">
+        <div>
+            <a href="career-selection.html" class="btn" style="text-decoration: none; padding: 8px 15px; background: #003366; color: white; border-radius: 4px;">Início</a>
+            <a href="student-details.html" class="btn" style="text-decoration: none; padding: 8px 15px; background: #003366; color: white; border-radius: 4px;">Meu Perfil</a>
+        </div>
+        <button id="btnLogout" class="btn-logout" style="padding: 8px 15px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Sair do Portal</button>
+    </nav>
+
+    <main class="container" style="max-width: 800px; margin: 20px auto; padding: 20px;">
+        <section class="profile-section card-anim" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h2 style="border-bottom: 2px solid #003366; padding-bottom: 10px; color: #003366;">Informações Pessoais</h2>
+            <div id="userInfo">
+                <p>Carregando perfil...</p>
+            </div>
+        </section>
+
+        <section class="profile-section card-anim" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h2 style="border-bottom: 2px solid #003366; padding-bottom: 10px; color: #003366;">Minhas Inscrições</h2>
+            <div id="userRegistrations">
+                <p>Buscando inscrições recentes...</p>
+            </div>
+        </section>
+
+        <section class="profile-section card-anim" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h2 style="border-bottom: 2px solid #003366; padding-bottom: 10px; color: #003366;">Resultados de Testes</h2>
+            <div id="userTests">
+                <p>Buscando histórico de pontuação...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/student-details.js"></script>
+</body>
+</html>

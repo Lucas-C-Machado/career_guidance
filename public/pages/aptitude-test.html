@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Teste de Aptidão - Sistema de Carreira</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/career-selection.css">
+</head>
+<body>
+    <header style="background: #003366; color: white; padding: 20px; text-align: center;">
+        <h1>Teste de Aptidão (AT)</h1>
+    </header>
+
+    <div class="container" id="testContainer" style="max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+        <div style="margin-bottom: 20px; background: #eee; border-radius: 10px; height: 10px; overflow: hidden;">
+            <div id="progressBar" style="width: 0%; height: 100%; background: #003366; transition: width 0.3s;"></div>
+        </div>
+
+        <h2 id="sectionTitle" style="color: #003366; border-bottom: 2px solid #003366; padding-bottom: 10px;">Iniciando...</h2>
+        
+        <form id="testForm">
+            <p id="questionText" style="font-size: 1.2em; margin: 20px 0; font-weight: bold;"></p>
+            <div id="optionsContainer" style="display: flex; flex-direction: column; gap: 15px;">
+                </div>
+
+            <button type="submit" id="nextBtn" class="btn-nav" style="width: 100%; background: #003366; color: white; border: none; padding: 15px; border-radius: 5px; cursor: pointer; margin-top: 30px; font-weight: bold;">
+                PRÓXIMA QUESTÃO
+            </button>
+        </form>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/aptitute-test.js"></script>
+</body>
+</html>

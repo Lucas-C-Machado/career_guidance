@@ -1,0 +1,46 @@
+/* Estilos específicos para a Seleção de Localização */
+.location-nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px;
+}
+
+.location-container {
+    display: flex; 
+    justify-content: space-around; 
+    margin-top: 30px; 
+    gap: 20px;
+}
+
+.btn-location {
+    flex: 1; 
+    padding: 40px; 
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-location:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn-logout {
+    background-color: #ff4444; 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    cursor: pointer; 
+    border-radius: 5px;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 480px) {
+    .location-container {
+        flex-direction: column;
+    }
+}

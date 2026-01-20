@@ -1,0 +1,36 @@
+/* Estilos específicos para o Registro na Instituição */
+.registration-nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px;
+}
+
+#collegeName {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+#registrationForm label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#registrationForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.btn-logout {
+    background-color: #ff4444; 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    cursor: pointer; 
+    border-radius: 5px;
+}

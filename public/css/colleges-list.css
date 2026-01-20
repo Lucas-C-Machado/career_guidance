@@ -1,0 +1,46 @@
+/* Estilos específicos para a Listagem de Faculdades */
+.list-nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px;
+}
+
+.filter-info {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.filter-info strong {
+    color: var(--primary-color);
+    text-transform: capitalize;
+}
+
+.college-item {
+    margin-bottom: 15px;
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.2s;
+}
+
+.college-item:hover {
+    transform: scale(1.01);
+}
+
+.college-item h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+}
+
+.btn-logout {
+    background-color: #ff4444; 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    cursor: pointer; 
+    border-radius: 5px;
+}
