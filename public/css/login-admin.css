@@ -1,0 +1,16 @@
+/* login-admin.css - APENAS O FUNDO E EXCEÇÕES */
+.login-page {
+    background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1920') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden; /* Evita que o card "escape" da tela */
+}
+
+.btn-admin {
+    background-color: #343a40 !important;
+    color: white;
+}
+
+.btn-admin:hover {
+    background-color: #23272b !important;
+}

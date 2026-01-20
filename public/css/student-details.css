@@ -1,0 +1,74 @@
+/* Container principal com limite de largura para não espalhar os dados */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Barra de Navegação Superior */
+.profile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.profile-nav div {
+    display: flex;
+    gap: 10px;
+}
+
+/* Padronização dos Botões (Azul Claro) */
+.profile-nav .btn {
+    background-color: var(--secondary-color) !important;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: filter 0.3s;
+}
+
+/* Botão Sair (Vermelho suave para destaque negativo) */
+.btn-logout {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-logout:hover { background-color: #c0392b; }
+
+/* Estilo dos Cards de Informação */
+.profile-section {
+    background: var(--white);
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 6px solid var(--secondary-color); /* Detalhe lateral azul */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.profile-section h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Alinhamento de itens de dados internos */
+.data-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+}

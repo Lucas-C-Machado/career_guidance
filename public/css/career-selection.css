@@ -1,0 +1,50 @@
+.selection-container {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.selection-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.career-card {
+    background: white;
+    width: 350px;
+    padding: 50px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-bottom: 5px solid transparent;
+}
+
+.career-card:hover {
+    transform: translateY(-15px);
+    border-bottom-color: var(--secondary-color);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+.career-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.career-card p {
+    color: #666;
+    font-weight: 500;
+}

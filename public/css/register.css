@@ -1,0 +1,148 @@
+/* Estilos específicos para a página de Registro/Cadastro */
+
+:root {
+    --primary-blue: #003366;
+    --secondary-blue: #00509d;
+    --bg-gradient: linear-gradient(135deg, #003366 0%, #001f3f 100%);
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset básico para garantir que o estilo funcione independente de outros arquivos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.bg-auth {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+header {
+    padding: 50px 20px 20px;
+    text-align: center;
+    color: var(--white);
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilização do Card */
+.card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+.card h2 {
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Formulário e Inputs */
+#registerForm {
+    margin-top: 25px;
+}
+
+#registerForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.85rem;
+}
+
+#registerForm input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#registerForm input:focus {
+    outline: none;
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 80, 157, 0.15);
+}
+
+/* Botão de Ação */
+.btn-primary {
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #003d7a;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Links de navegação */
+.card p a {
+    color: var(--secondary-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card p a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes para telas menores (Responsividade) */
+@media (max-width: 500px) {
+    .card {
+        padding: 30px 20px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    /* Força o grid de senhas a virar coluna no celular */
+    div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Cadastro - Orientação de Carreira</title>
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-auth">
+    <header>
+        <h1>Orientação de Carreira</h1>
+    </header>
+
+    <div class="container">
+        <div class="card card-center" style="max-width: 500px;">
+            <h2>Cadastro de Aluno</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Crie sua conta para acessar a orientação.</p>
+            
+            <form id="registerForm">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required placeholder="Ex: João Silva">
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="username">
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="password" required minlength="6" placeholder="******" autocomplete="new-password">
+                    </div>
+                    <div>
+                        <label for="confirmPassword">Confirmar:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="******" autocomplete="new-password">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full" style="margin-top: 25px;">
+                    Finalizar Cadastro
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 20px;">
+                Já tem uma conta? <a href="login-student.html">Faça login aqui</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>

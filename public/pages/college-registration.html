@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.gstatic.com https://*.googleapis.com https://*.firebaseapp.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Registro - Orientação de Carreira</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/college-registration.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="../js/firebase-config.js"></script>
+    
+    </head>
+<body>
+    <header>
+        <h1>Registro na Instituição</h1>
+    </header>
+    
+    <nav class="registration-nav">
+        <div>
+            <a href="college-list.html" class="btn">Voltar</a>
+        </div>
+        <button id="btnLogout" class="btn-logout">Sair do Portal</button>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>Inscrição para: <span id="collegeName">Carregando...</span></h2>
+            <p>Para prosseguir com sua inscrição, precisamos de algumas informações acadêmicas adicionais.</p>
+            
+            <form id="registrationForm">
+                <label for="cgpa">CGPA / Média Acadêmica:</label>
+                <input type="number" id="cgpa" name="cgpa" step="0.1" required placeholder="Ex: 8.5">
+                
+                <label for="sop">Declaração de Propósito (SOP):</label>
+                <textarea id="sop" name="sop" rows="5" required placeholder="Conte-nos por que você quer estudar nesta instituição..."></textarea>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">
+                    Prosseguir para o Teste de Aptidão
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/college-registration.js"></script>
+</body>
+</html>
