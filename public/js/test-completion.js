@@ -1,68 +1,84 @@
 /**
- * TEST-COMPLETION.JS - Versão Final
- * Objetivo: Exibir o resultado final e limpar dados temporários com segurança.
+ * TEST-COMPLETION.JS - Versão Final (Sem necessidade de Índice)
+ * Objetivo: Exibir a pontuação correta buscando do Firestore como fallback.
  */
 
-auth.onAuthStateChanged(user => {
-    // 1. Proteção de Rota
+auth.onAuthStateChanged(async (user) => {
+    // 1. Proteção de Rota: Se não houver usuário, volta para o login
     if (!user) {
         window.location.href = 'login-student.html';
         return;
     }
 
-    // 2. Recuperação de dados do localStorage
-    // Buscamos 'testScore' (definido no teste) e 'selectedCollegeName' (definido na lista/seleção)
-    const score = localStorage.getItem('testScore') || "0";
-    const collegeName = localStorage.getItem('selectedCollegeName') || "sua instituição escolhida";
-
-    // 3. Atualização da Interface
     const scoreDisplay = document.getElementById('scoreDisplay');
+    
+    // 2. Tenta obter o valor imediato do localStorage
+    let score = localStorage.getItem('testScore');
+
+    // 3. Fallback: Se o localStorage estiver vazio ou em 0%, busca no Firestore
+    // Usamos a lógica que não exige a criação de índices manuais no Firebase
+    if (!score || score === "0") {
+        console.log("LocalStorage vazio ou inconsistente. Buscando do Firestore...");
+        try {
+            const firestoreDb = window.db || firebase.firestore();
+            
+            // Busca simplificada: apenas o filtro de UID (não exige índice)
+            const querySnapshot = await firestoreDb.collection('registrations')
+                .where('studentUid', '==', user.uid)
+                .get();
+
+            if (!querySnapshot.empty) {
+                // Transformamos os documentos em uma lista de dados
+                const docs = querySnapshot.docs.map(doc => doc.data());
+
+                // Ordenamos manualmente pelo campo 'appliedAt' (do mais novo para o mais antigo)
+                docs.sort((a, b) => {
+                    const timeA = a.appliedAt ? a.appliedAt.toMillis() : 0;
+                    const timeB = b.appliedAt ? b.appliedAt.toMillis() : 0;
+                    return timeB - timeA;
+                });
+
+                // Pegamos a pontuação do teste mais recente
+                score = docs[0].testScore;
+                
+                // Sincronizamos o localStorage para evitar novas consultas
+                localStorage.setItem('testScore', score);
+            }
+        } catch (error) {
+            console.error("Erro ao recuperar dados do Firestore:", error);
+        }
+    }
+
+    // 4. Atualização visual da Interface
     if (scoreDisplay) {
-        scoreDisplay.textContent = score + "%";
+        const finalValue = (score !== null && score !== undefined) ? score : "0";
+        scoreDisplay.textContent = `${finalValue}%`;
+        
+        // Aplica a cor baseada no desempenho
+        const numScore = parseInt(finalValue);
+        if (numScore >= 70) {
+            scoreDisplay.style.color = "#28a745"; // Verde (Sucesso)
+        } else if (numScore >= 50) {
+            scoreDisplay.style.color = "#ffc107"; // Amarelo (Atenção)
+        } else {
+            scoreDisplay.style.color = "#dc3545"; // Vermelho (Insuficiente)
+        }
     }
 
-    // Mostrar o nome da faculdade no elemento correspondente
-    const collegeInfo = document.getElementById('collegeInfo');
-    if (collegeInfo) {
-        collegeInfo.textContent = `Inscrição realizada para: ${collegeName}`;
-    }
-
-    // Removido Logger.log para evitar erros de referência
-    console.log("Resultado processado com sucesso para:", user.email);
+    console.log("Resultado final processado para:", user.email, "Score:", score);
 });
 
-// 4. Lógica de Logout com animação de fade
+// 5. Lógica de Logout
 const btnLogout = document.getElementById('btnLogout');
 if (btnLogout) {
     btnLogout.addEventListener('click', () => {
-        // Feedback visual de saída (Efeito Fade)
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.4s ease';
-        
-        setTimeout(() => {
-            // 5. Limpeza de Segurança
-            // Removemos todos os itens temporários para que o próximo login esteja limpo
-            const itemsToRemove = [
-                'testScore', 
-                'lastScore', 
-                'selectedCollegeName', 
-                'selectedCollegeId', 
-                'minCgpaRequired',
-                'tempCollegeName',
-                'tempMinCgpa',
-                'selectedCareer',
-                'selectedLocation'
-            ];
-            
-            itemsToRemove.forEach(item => localStorage.removeItem(item));
-            
-            // 6. Finaliza sessão no Firebase e redireciona
-            auth.signOut().then(() => { 
-                window.location.href = '../index.html'; 
-            }).catch(err => {
-                console.error("Erro ao deslogar:", err);
-                window.location.href = '../index.html';
-            });
-        }, 400);
+        // Limpa dados sensíveis antes de sair
+        localStorage.removeItem('testScore');
+        auth.signOut().then(() => {
+            window.location.href = '../index.html';
+        }).catch(err => {
+            console.error("Erro ao sair:", err);
+            window.location.href = '../index.html';
+        });
     });
 }
